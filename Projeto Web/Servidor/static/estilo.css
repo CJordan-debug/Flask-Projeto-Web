@@ -1,0 +1,32 @@
+body{
+    height:100%;
+    background-image:linear-gradient(black, white);
+}
+
+h1,h2{
+   color:#19dd3d;
+}
+
+label{
+    display:block;
+    padding: 1em 0 0 0;
+}
+
+form {
+    background-color:#b2b2b2;
+}
+
+input:hover, textarea, select {
+    background-color:#f4e1d2;
+}
+
+input:focus, textarea:focus {
+    background-color:#fefbd8;
+}
+
+.erro{
+    color:red;
+}
+table, td , tr{
+    border: 1px solid white;
+}

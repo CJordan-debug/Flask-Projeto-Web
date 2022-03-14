@@ -1,0 +1,64 @@
+{% extends "layout/base.html" %}
+{% block titulo %}Cadastro de Jogos{% endblock %}
+{% block conteudo %}
+<form method="POST" enctype="multipart/form-data" action="{{url_for('cadastrarJogos')}}">
+    <fieldset>
+        <legend>Cadastro de Jogos</legend>
+        <label style="display:block" for="nomeJogo">Nome do Jogo:</label>
+        <input type="text"
+               id="nomeJogo"
+               name="nomeJogo"
+               maxlength="50"
+
+               {% if nomeJogo %}
+               value="{{nomeJogo}}"
+               {% endif %}
+
+               placeholder="Digite o título do jogo aqui..." required/>
+        {% if nomeJogo and nomeJogo|length < 5 %}
+            <span><strong class="erro">O nome do jogo deve ter pelo menos 5 caracteres</strong></span>
+        {% endif %}
+        <label for="categoria">Categoria</label>
+        <select id="categoria" name="categoria">
+            <option value="ação" selected>Ação</option>
+            <option value="aventura">Aventura</option>
+            <option value="fps">Fps</option>
+            <option value="rpg">RPG</option>
+            <option value="terror">Terror</option>
+        </select>
+        <label for="idadeMin">Classificação indicativa a partir de&nbsp;</label>
+        <input type="number" id="idadeMin" name="idadeMin" min="2" max="120" value="2"/>&nbsp;<strong>anos</strong>
+        <label for="foto">Imagem de capa:</label>
+        <input type="file" id="foto" name="foto"/>
+        <label for="descrição">Descrição do jogo:</label>
+        <textarea id="descrição" name="descrição"></textarea><br/>
+        <button type="submit">Cadastrar</button><button type="reset">Limpar formulário</button>
+    </fieldset>
+</form>
+{% if listaJogos and listaJogos|length > 0 %}
+    <table>
+        <thead>
+            <td>Código</td>
+            <td>Nome do Jogo</td>
+            <td>Categoria</td>
+            <td>Classificação Indicativa</td>
+            <td>Capa</td>
+            <td>Descrição</td>
+        </thead>
+        <tbody>
+            {% for jogo in listaJogos %}
+            <tr>
+                <td>{{jogo.codigo}}</td>
+                <td>{{jogo.nomeJogo}}</td>
+                <td>{{jogo.categoria}}</td>
+                <td>{{jogo.idadeMinima}}</td>
+                <td><img width="40" height="40" src="{{jogo.imagem}}"/></td>
+                <td>{{jogo.descricao}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <span><strong class="erro">Não existem jogos cadastrados!</strong></span>
+{% endif %}
+{% endblock %}

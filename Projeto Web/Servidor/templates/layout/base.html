@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{url_for('static',filename='estilo.css')}}"/>
+        <title>{% block titulo %}{% endblock%}</title>
+    </head>
+    <body>
+        <div class="cabecalho">
+            <h1>WEBPLAY STORE</h1>
+        </div>
+        <div class="corpo">
+            <aside>
+                <div class="menu">
+                    <ul>
+                        <li><a href="{{url_for('index')}}">Home</a></li>
+                        <li><a href="{{url_for('games')}}">Games</a></li>
+                        <li><a href="{{url_for('cadastrarJogos')}}">Cadastrar Jogos</a></li>
+                        <li><a href="#">Lançamentos</a></li>
+                        <li><a href="#">Fale conosco</a></li>
+                        <li><a href="#">Sobre nós</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <div class="conteudo">
+                {% block conteudo %}{% endblock %}
+            </div>
+        </div>
+        <div class="rodape">
+            <p><strong>Av. dos Almirantes, 123, Vila Jogador - Presidente Prudente/SP - Fone (18) 2222-3333</strong></p>
+        </div>
+    </body>
+</html>

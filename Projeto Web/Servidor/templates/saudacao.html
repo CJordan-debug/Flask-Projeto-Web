@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="{{url_for('static',filename='estilo.css')}}"/>
+    <meta charset="UTF-8">
+    <title>Seja bem vindo ao nosso site! Divirta-se</title>
+</head>
+<body>
+  <h1>Bem vindo!</h1>
+  <h2>Olá {{nome}}!</h2>
+  {% if idade %}
+    <span><strong>Parabéns pelos {{idade}} anos!</strong></span>
+  {% endif %}
+
+  {% if hora < 13 %}
+        <img src="{{url_for('static',filename='imagens/manha.png')}}" alt="imagem de saudação manhã"/>
+        <strong>Bom dia!</strong>
+  {% elif hora > 12 and hora < 19 %}
+        <img src="{{url_for('static',filename='imagens/tarde.png')}}" alt="imagem de saudação tarde"/>
+        <strong>Boa tarde!</strong>
+  {% else %}
+        <img src="{{url_for('static',filename='imagens/noite.png')}}" alt="imagem de saudação noite"/>
+        <strong><br/>Boa noite!</strong>
+  {% endif %}
+</body>
+</html>
